@@ -1,21 +1,25 @@
-def insert_list_of_titles_into_mysql():
-	import requests
-	from bs4 import BeautifulSoup as bs
-	file_="/home/david/Desktop/Programming/etc..."
-	file_handler = open(file_,'r')
-	db = MySQLdb.connect(host="localhost",    # your host, usually localhost
-                     user="",         # your username
-                     passwd="creative",  # your password
-                     db="imdb_stuff")        #
-	cursor = db.cursor()
-	for line in file_handler:
-		print line
-		data=line.split("\t")
-		data[0]
-		query="INSERT INTO movie_list (Movie,average,total_count,0,1,2,3,4,5,6,7,8,9,10) values ("+ data[3] + "," + data[2] + "," + data[1] + "," + data[0][0] + "," + data[0][1] + "," + data[0][2] +"," + data[0][3] + "," + data[0][4] + "," + data[0][5] + "," + data[0][6] + "," + data[0][7] + "," + data[0][8] + "," + data[0][9] + ");"
-		print query
-		cursor.execute(query)
-	return True
+#def insert_list_of_titles_into_mysql():
+#	import requests
+#	from bs4 import BeautifulSoup as bs
+#	file_="/home/david/Desktop/Programming/etc..."
+#	file_handler = open(file_,'r')
+#	db = MySQLdb.connect(host="localhost",    # your host, usually localhost
+ #                    user="",         # your username
+  #                   passwd="",  # your password
+   #                  db="imdb_stuff")        #
+#	cursor = db.cursor()
+#	for line in file_handler:
+#		print line
+#		data=line.split("\t")
+#		data[0]
+#		query="INSERT INTO movie_list (Movie,average,total_count,0,1,2,3,4,5,6,7,8,9,10) values ("+ data[3] + "," + data[2] + "," + data[1] + "," + data[0][0] + "," + data[0][1] + "," + data[0][2] +"," + data[0][3] + "," + data[0][4] + "," + data[0][5] + "," + data[0][6] + "," + data[0][7] + "," + data[0][8] + "," + data[0][9] + ");"
+#		print query
+#		cursor.execute(query)
+#	return True
+
+
+#The above code was originally going to put data from a downloadable IMDB file into a database.
+#I later decided that it was useless, but I wanted to save the code for later in case I do find a use for it.
 
 
 def grab_top_rated_titles(total_entries):
@@ -31,7 +35,7 @@ def grab_top_rated_titles(total_entries):
 		time.sleep(4+6*random.random())
 		db = MySQLdb.connect(host="localhost",    # your host, usually localhost
                      user="root",         # your username
-                     passwd="creative",  # your password
+                     passwd="",  # your password
                      db="imdb_stuff")        #
 		cursor = db.cursor()
 		soup=bs(r._content,'html.parser')
@@ -64,11 +68,11 @@ def scan_gender_disparities(max_vote=99999999):
 	female_perc=[0,0,0,0,0,0,0,0,0,0,0]
 	db = MySQLdb.connect(host="localhost",    # your host, usually localhost
                      user="root",         # your username
-                     passwd="creative",  # your password
+                     passwd="",  # your password
                      db="imdb_stuff")        #
 	db2 = MySQLdb.connect(host="localhost",    # your host, usually localhost
                      user="root",         # your username
-                     passwd="creative",  # your password
+                     passwd="",  # your password
                      db="imdb_stuff")
 	cursor = db.cursor()
 	cursor2 = db2.cursor()
@@ -135,7 +139,7 @@ def scan_gender_disparities(max_vote=99999999):
 if __name__ == "__main__":
 	db = MySQLdb.connect(host="localhost",    # your host, usually localhost
                      user="root",         # your username
-                     passwd="creative",  # your password
+                     passwd="",  # your password
                      db="")
 	cursor=db.cursor()
 	query1="CREATE DATABASE imdb_stuff;"
